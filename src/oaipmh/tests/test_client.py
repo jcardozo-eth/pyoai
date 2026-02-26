@@ -4,7 +4,7 @@ try:
 except ImportError:  # python < 3.3
     import mock
 
-from fakeclient import FakeClient, GranularityFakeClient, TestError
+from .fakeclient import FakeClient, GranularityFakeClient, TestError
 import os
 from datetime import datetime
 try:

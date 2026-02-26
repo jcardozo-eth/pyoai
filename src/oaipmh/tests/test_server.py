@@ -8,8 +8,8 @@ except ImportError:
 from oaipmh import server, client, common, metadata, error
 from lxml import etree
 from datetime import datetime
-import fakeclient
-import fakeserver
+from . import fakeclient
+from . import fakeserver
 
 NS_OAIPMH = server.NS_OAIPMH
 

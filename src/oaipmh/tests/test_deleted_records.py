@@ -1,5 +1,5 @@
 from unittest import TestCase, TestSuite, main, makeSuite
-from fakeclient import FakeClient
+from .fakeclient import FakeClient
 import os
 from oaipmh import metadata
 from datetime import datetime

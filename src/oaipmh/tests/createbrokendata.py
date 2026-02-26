@@ -1,4 +1,4 @@
-from fakeclient import FakeCreaterClient
+from .fakeclient import FakeCreaterClient
 from datetime import datetime
 from oaipmh import metadata
 

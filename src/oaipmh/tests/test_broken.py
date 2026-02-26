@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 from unittest import TestCase, TestSuite, makeSuite, main
 
-from fakeclient import FakeClient
+from .fakeclient import FakeClient
 from oaipmh import metadata, error
 
 test_directory = os.path.dirname(__file__)

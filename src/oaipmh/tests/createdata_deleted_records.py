@@ -1,4 +1,4 @@
-from fakeserver import FakeCreaterServerProxy
+from .fakeserver import FakeCreaterServerProxy
 
 # tied to the server at EUR..
 server = FakeCreaterServerProxy(
