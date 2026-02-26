@@ -1,4 +1,4 @@
-import pkg_resources
+from importlib.metadata import version as _get_version
 
 from oaipmh import error
 
@@ -61,11 +61,9 @@ class Identify(object):
         self._descriptions = []
         
         if toolkit_description:
-            req = pkg_resources.Requirement.parse('pyoai')
-            egg = pkg_resources.working_set.find(req)
-            if egg:
-                version = '<version>%s</version>' % egg.version
-            else:
+            try:
+                version = '<version>%s</version>' % _get_version('pyoai')
+            except Exception:
                 version = ''
             self.add_description(
                 '<toolkit xsi:schemaLocation='
