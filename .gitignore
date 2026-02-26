@@ -1,7 +1,8 @@
+__pycache__/
 *.pyc
-.installed.cfg
-bin
-develop-eggs
-parts
-src/pyoai.egg-info
-.tox
+dist/
+build/
+*.egg-info/
+.venv/
+.direnv/
+.pytest_cache/
