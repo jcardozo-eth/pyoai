@@ -1,4 +1,4 @@
-from unittest import TestCase, TestSuite, main, makeSuite
+from unittest import TestCase
 from .fakeclient import FakeClient
 import os
 from oaipmh import metadata
@@ -34,8 +34,3 @@ class DeletedRecordsTestCase(TestCase):
             else:
                 self.assert_(metadata is not None)
     
-def test_suite():
-    return TestSuite((makeSuite(DeletedRecordsTestCase), ))
-
-if __name__=='__main__':
-    main(defaultTest='test_suite')

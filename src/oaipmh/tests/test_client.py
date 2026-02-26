@@ -1,4 +1,4 @@
-from unittest import TestCase, TestSuite, main, makeSuite
+from unittest import TestCase
 try:
     from unittest import mock
 except ImportError:  # python < 3.3
@@ -219,9 +219,3 @@ class ClientTestCase(TestCase):
                 self.assertEqual(sleep.call_count, 5)
                 sleep.assert_has_calls([mock.call(5)] * 5)
 
-
-def test_suite():
-    return TestSuite((makeSuite(ClientTestCase), ))
-
-if __name__=='__main__':
-    main(defaultTest='test_suite')

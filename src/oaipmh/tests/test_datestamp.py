@@ -1,5 +1,5 @@
 from datetime import datetime
-from unittest import TestCase, TestSuite, makeSuite
+from unittest import TestCase
 from oaipmh.datestamp import datestamp_to_datetime,\
      tolerant_datestamp_to_datetime
 from oaipmh.error import DatestampError
@@ -63,5 +63,3 @@ class DatestampTestCase(TestCase):
             datetime(2005, 2, 1),
             f('2005-02'))
         
-def test_suite():
-    return TestSuite((makeSuite(DatestampTestCase), ))

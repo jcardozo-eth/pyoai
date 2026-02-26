@@ -58,9 +58,3 @@ class ArgumentValidatorTestCase(unittest.TestCase):
         self.assertRaises(
             validation.BadArgumentError,
             validation.validate, spec, {'foo': 'Foo', 'hoi': 'Hoi'})
-        
-def test_suite():
-    return unittest.TestSuite([unittest.makeSuite(ArgumentValidatorTestCase)])
-
-if __name__=='__main__':
-    main(defaultTest='test_suite')

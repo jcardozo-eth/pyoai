@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from unittest import TestCase, TestSuite, makeSuite, main
+from unittest import TestCase
 
 from .fakeclient import FakeClient
 from oaipmh import metadata, error
@@ -26,9 +26,3 @@ class BrokenDataTestCase(TestCase):
     def test_broken_datestamp(self):
         fakeclient = self.createFakeClient('fake5')
         self.assertRaises(error.DatestampError, fakeclient.identify)
-
-def test_suite():
-    return TestSuite((makeSuite(BrokenDataTestCase), ))
-
-if __name__ == '__main__':
-    main()

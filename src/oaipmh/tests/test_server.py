@@ -411,18 +411,3 @@ class NsMapTestCase(unittest.TestCase):
         self.assertEquals(
             'http://www.cow.com',
             tree.getroot().nsmap['cow'])
-        
-        
-def test_suite():
-    return unittest.TestSuite([
-        unittest.makeSuite(XMLTreeServerTestCase),
-        unittest.makeSuite(ServerTestCase),
-        unittest.makeSuite(ResumptionTestCase),
-        unittest.makeSuite(BatchingResumptionTestCase),
-        unittest.makeSuite(ClientServerTestCase),
-        unittest.makeSuite(ErrorTestCase),
-        unittest.makeSuite(DeletionTestCase),
-        unittest.makeSuite(NsMapTestCase)])
-
-if __name__=='__main__':
-    main(defaultTest='test_suite')
