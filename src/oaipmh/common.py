@@ -62,7 +62,7 @@ class Identify(object):
         
         if toolkit_description:
             try:
-                version = '<version>%s</version>' % _get_version('pyoai')
+                version = '<version>%s</version>' % _get_version('oaipmh')
             except Exception:
                 version = ''
             self.add_description(
@@ -71,9 +71,9 @@ class Identify(object):
                 'http://oai.dlib.vt.edu/OAI/metadata/toolkit.xsd" '
                 'xmlns="http://oai.dlib.vt.edu/OAI/metadata/toolkit" '
                 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
-                '<title>pyoai</title>'
+                '<title>oaipmh</title>'
                 '%s'
-                '<URL>http://infrae.com/products/oaipack</URL>'
+                '<URL>https://github.com/eth-library/oaipmh</URL>'
                 '</toolkit>' % version)
         
     def repositoryName(self):
