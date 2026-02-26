@@ -1,10 +1,6 @@
 import unittest
 import os
-import six
-try:
-    from StringIO import StringIO
-except ImportError:
-    from io import StringIO, BytesIO
+from io import BytesIO
 from oaipmh import server, client, common, metadata, error
 from lxml import etree
 from datetime import datetime
@@ -21,9 +17,7 @@ def fileInTestDir(name):
 oaischema = etree.XMLSchema(etree.parse(fileInTestDir('OAI-PMH.xsd')))
 
 def etree_parse(xml):
-    if six.PY2:
-        return etree.parse(StringIO(xml))
-    return etree.parse(BytesIO(xml)) # .decode("utf-8")))
+    return etree.parse(BytesIO(xml))
 
 class XMLTreeServerTestCase(unittest.TestCase):
     
@@ -87,8 +81,7 @@ class XMLTreeServerTestCase(unittest.TestCase):
         # ugly xml manipulation, this is probably why the requirement is in
         # the spec (yuck!)
         xml = etree.tostring(tree)
-        if six.PY3:
-            xml = xml.decode("utf-8")
+        xml = xml.decode("utf-8")
         xml = xml.split('<metadata>')[-1].split('</metadata>')[0]
         first_el = xml.split('>')[0]
         self.assertTrue(first_el.startswith('<oai_dc:dc'))

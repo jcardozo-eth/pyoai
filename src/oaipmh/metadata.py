@@ -1,13 +1,6 @@
-import sys
-
 from lxml import etree
 from lxml.etree import SubElement
 from oaipmh import common
-
-if sys.version_info[0] == 3:
-    text_type = str
-else:
-    text_type = unicode
 
 class MetadataRegistry(object):
     """A registry that contains readers and writers of metadata.
@@ -69,7 +62,7 @@ class MetadataReader(object):
         xpath_evaluator = etree.XPathEvaluator(element, 
                                                namespaces=self._namespaces)
         
-        e = xpath_evaluator.evaluate
+        e = xpath_evaluator
         # now extra field info according to xpath expr
         for field_name, (field_type, expr) in list(self._fields.items()):
             if field_type == 'bytes':
@@ -79,11 +72,11 @@ class MetadataReader(object):
             elif field_type == 'text':
                 # make sure we get back unicode strings instead
                 # of lxml.etree._ElementUnicodeResult objects.
-                value = text_type(e(expr))
+                value = str(e(expr))
             elif field_type == 'textList':
                 # make sure we get back unicode strings instead
                 # of lxml.etree._ElementUnicodeResult objects.
-                value = [text_type(v) for v in e(expr)]
+                value = [str(v) for v in e(expr)]
             else:
                 raise Error("Unknown field type: %s" % field_type)
             map[field_name] = value

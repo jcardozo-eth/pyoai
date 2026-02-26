@@ -14,7 +14,7 @@ authors = [
 maintainers = [
     { name = "Jaime Cardozo", email = "jaime.cardozo@library.ethz.ch" },
 ]
-dependencies = ["lxml", "six"]
+dependencies = ["lxml"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python",

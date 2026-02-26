@@ -7,10 +7,7 @@ class Header(object):
         self._element = element
         # force identifier to be a string, it might be 
         # an lxml.etree._ElementStringResult...
-        try:
-            self._identifier = str(identifier)
-        except UnicodeEncodeError:
-            self._identifier = unicode(identifier)
+        self._identifier = str(identifier)
         self._datestamp = datestamp
         self._setspec = setspec
         self._deleted = deleted
