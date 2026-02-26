@@ -1,4 +1,4 @@
-from fakeclient import FakeCreaterClient
+from .fakeclient import FakeCreaterClient
 
 # tied to the server at EUR..
 client = FakeCreaterClient(

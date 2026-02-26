@@ -37,5 +37,8 @@ Issues = "https://github.com/eth-library/oaipmh/issues"
 [project.optional-dependencies]
 test = ["pytest"]
 
+[tool.pytest.ini_options]
+testpaths = ["src/oaipmh/tests"]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/oaipmh"]
