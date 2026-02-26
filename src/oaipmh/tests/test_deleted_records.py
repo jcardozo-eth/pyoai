@@ -15,14 +15,14 @@ class DeletedRecordsTestCase(TestCase):
     def test_getRecord_deleted(self):
         header, metadata, about = fakeclient.getRecord(
             metadataPrefix='oai_dc', identifier='hdl:1765/1160')
-        self.assert_(metadata is None)
-        self.assert_(header.isDeleted())
+        self.assertTrue(metadata is None)
+        self.assertTrue(header.isDeleted())
 
     def test_getRecord_not_deleted(self):
         header, metadata, about = fakeclient.getRecord(
             metadataPrefix='oai_dc', identifier='hdl:1765/1162')
-        self.assert_(metadata is not None)
-        self.assert_(not header.isDeleted())
+        self.assertTrue(metadata is not None)
+        self.assertTrue(not header.isDeleted())
 
     def test_listRecords(self):
         records = fakeclient.listRecords(from_=datetime(2004, 1, 1),
@@ -30,7 +30,7 @@ class DeletedRecordsTestCase(TestCase):
         # lazy, just test first one
         for header, metadata, about in records:
             if header.isDeleted():
-                self.assert_(metadata is None)
+                self.assertTrue(metadata is None)
             else:
-                self.assert_(metadata is not None)
+                self.assertTrue(metadata is not None)
     
