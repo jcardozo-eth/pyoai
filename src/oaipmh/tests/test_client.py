@@ -1,18 +1,11 @@
 from unittest import TestCase
-try:
-    from unittest import mock
-except ImportError:  # python < 3.3
-    import mock
+from unittest import mock
 
 from .fakeclient import FakeClient, GranularityFakeClient, TestError
 import os
 from datetime import datetime
-try:
-    import urllib.request as urllib2
-    URLOPEN_PATH = 'urllib.request.urlopen'
-except ImportError:
-    import urllib2
-    URLOPEN_PATH = 'urllib2.urlopen'
+import urllib.request as urllib2
+URLOPEN_PATH = 'urllib.request.urlopen'
 
 from oaipmh import common, metadata, validation, client
 
