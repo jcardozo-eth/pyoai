@@ -15,7 +15,7 @@ class FakeClient(client.BaseClient):
         # sort it to get stable behavior
         return self._mapping[getRequestKey(kw)]
 
-class TestError(Exception):
+class FakeRequestError(Exception):
     def __init__(self, kw):
         self.kw = kw
 
@@ -28,7 +28,7 @@ class GranularityFakeClient(client.BaseClient):
         # even more fake, we'll simply raise an exception with the request
         # this can be caught by the test to see whether the request uses
         # day granularity..
-        raise TestError(kw)
+        raise FakeRequestError(kw)
 
     def identify(self):
         return common.Identify(

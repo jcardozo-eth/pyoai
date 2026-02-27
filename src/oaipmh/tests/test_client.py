@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest import mock
 
-from .fakeclient import FakeClient, GranularityFakeClient, TestError
+from .fakeclient import FakeClient, GranularityFakeClient, FakeRequestError
 import os
 from datetime import datetime
 import urllib.request as urllib2
@@ -164,7 +164,7 @@ class ClientTestCase(TestCase):
         try:
             fakeclient.listRecords(from_=datetime(2003, 4, 10, 14, 0),
                                    metadataPrefix='oai_dc')
-        except TestError as e:
+        except FakeRequestError as e:
             self.assertEqual('2003-04-10T14:00:00Z', e.kw['from'])
         fakeclient = GranularityFakeClient(granularity='YYYY-MM-DD')
         fakeclient.updateGranularity()
@@ -172,7 +172,7 @@ class ClientTestCase(TestCase):
             fakeclient.listRecords(from_=datetime(2003, 4, 10, 14, 0),
                                    until=datetime(2004, 6, 17, 15, 30),
                                    metadataPrefix='oai_dc')
-        except TestError as e:
+        except FakeRequestError as e:
             self.assertEqual('2003-04-10', e.kw['from'])
             self.assertEqual('2004-06-17', e.kw['until'])
 
