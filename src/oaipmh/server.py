@@ -1,6 +1,6 @@
 from lxml.etree import ElementTree, Element, SubElement
 from lxml import etree
-from datetime import datetime
+from datetime import datetime, timezone
 try:
     from urllib.parse import urlencode, quote, unquote
 except ImportError:
@@ -174,7 +174,7 @@ class XMLTreeServer(object):
         e_responseDate = SubElement(e_oaipmh, nsoai('responseDate'))
         # date should be first possible moment
         e_responseDate.text = datetime_to_datestamp(
-            datetime.utcnow().replace(microsecond=0))
+            datetime.now(timezone.utc).replace(microsecond=0, tzinfo=None))
         e_request = SubElement(e_oaipmh, nsoai('request'))
         for key, value in kw.items():
             if key == 'from_':
